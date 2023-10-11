@@ -1,0 +1,19 @@
+version: "3.3"
+services:
+  llava:
+    build:
+      context: .
+    ports:
+      - "${HOST_API_PORT:-7860}:${API_PORT:-7860}"
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./liuhaotian_llava-v1.5-13b:/app/liuhaotian_llava-v1.5-13b
+      - ./clip-vit-large-patch14-336:/app/clip-vit-large-patch14-336
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ['0']
+              capabilities: [gpu]
