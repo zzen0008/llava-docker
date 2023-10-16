@@ -1,6 +1,8 @@
 version: "3.3"
 services:
   llava:
+    environment:
+      QUANTISATION: --load-4bit
     build:
       context: .
     ports:
@@ -8,8 +10,8 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - ./liuhaotian_llava-v1.5-13b:/app/liuhaotian_llava-v1.5-13b
-      - ./clip-vit-large-patch14-336:/app/clip-vit-large-patch14-336
+      - ../llava-v1.5-13b:/app/llava-v1.5-13b
+      - ../clip-vit-large-patch14-336:/app/clip-vit-large-patch14-336
     deploy:
       resources:
         reservations:
