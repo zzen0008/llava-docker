@@ -7,6 +7,8 @@ services:
       context: .
     ports:
       - "${HOST_API_PORT:-7860}:${API_PORT:-7860}"
+      - 7861:10000
+      - 7862:40000
     stdin_open: true
     tty: true
     volumes:
